@@ -3,24 +3,25 @@ package day1
 import (
 	"AdventOfCode2022/tools"
 	"fmt"
+	"sort"
 	"strconv"
 )
 
 func Part1() {
-	smallResult := CalculateResult(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := CalculateTopElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateResult(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := CalculateTopElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
 func Part2() {
-	smallResult := CalculateResult(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := CalculateTopThreeElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateResult(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := CalculateTopThreeElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
-func CalculateResult(input []int) int {
+func CalculateElfCalorieList(input []int) []int {
 	resultList := []int{}
 	length := len(input)
 	sum := 0
@@ -36,14 +37,38 @@ func CalculateResult(input []int) int {
 		resultList = append(resultList, sum)
 		sum = 0
 	}
+	return resultList
+}
+
+func GetHighestValue(input []int) int {
 	var largerNumber, temp int
-	for _, element := range resultList {
+	for _, element := range input {
 		if element > temp {
 			temp = element
 			largerNumber = temp
 		}
 	}
 	return largerNumber
+}
+
+func GetHighestThreeValue(input []int) int {
+	sort.Ints(input)
+	sum := 0
+	length := len(input)
+	for i := 1; i < 4; i++ {
+		sum = sum + input[length-i]
+	}
+	return sum
+}
+
+func CalculateTopThreeElfCalories(input []int) int {
+	calorieList := CalculateElfCalorieList(input)
+	return GetHighestThreeValue(calorieList)
+}
+
+func CalculateTopElfCalories(input []int) int {
+	calorieList := CalculateElfCalorieList(input)
+	return GetHighestValue(calorieList)
 }
 
 func SmallInputLazy() []int {

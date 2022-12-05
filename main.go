@@ -9,5 +9,5 @@ func main() {
 }
 
 func Day1() {
-	day1.Part1()
+	day1.Part2()
 }
