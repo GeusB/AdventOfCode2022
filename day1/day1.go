@@ -8,16 +8,16 @@ import (
 )
 
 func Part1() {
-	smallResult := CalculateTopElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := CalculateTopElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateTopElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := CalculateTopElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
 func Part2() {
-	smallResult := CalculateTopThreeElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := CalculateTopThreeElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateTopThreeElfCalories(SmallInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := CalculateTopThreeElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
@@ -71,11 +71,7 @@ func CalculateTopElfCalories(input []int) int {
 	return GetHighestValue(calorieList)
 }
 
-func SmallInputLazy() []int {
-	return []int{1000, 2000, 3000, 0, 4000, 0, 5000, 6000, 0, 7000, 8000, 9000, 0, 10000}
-}
-
-func SmallInput(filePath string) []int {
+func GetInput(filePath string) []int {
 	lines := tools.ReadFile(filePath)
 	length := len(lines)
 	resultList := []int{}
