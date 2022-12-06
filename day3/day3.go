@@ -61,19 +61,6 @@ func calculateCompartmentsScore(filePath string) int {
 	return total
 }
 
-func removeDuplicates(intSlice []string) []string {
-	keys := make(map[string]bool)
-	result := []string{}
-
-	for _, x := range intSlice {
-		if _, val := keys[x]; !val {
-			keys[x] = true
-			result = append(result, x)
-		}
-	}
-	return result
-}
-
 func getMatches(chars []rune, target map[string]bool) []string {
 	match := []string{}
 	for _, val := range chars {
@@ -82,7 +69,7 @@ func getMatches(chars []rune, target map[string]bool) []string {
 			match = append(match, str)
 		}
 	}
-	return removeDuplicates(match)
+	return tools.RemoveDuplicates(match)
 }
 
 func getMatches2(chars []string, target map[string]bool) []string {
@@ -93,7 +80,7 @@ func getMatches2(chars []string, target map[string]bool) []string {
 			match = append(match, str)
 		}
 	}
-	return removeDuplicates(match)
+	return tools.RemoveDuplicates(match)
 }
 
 func makeMap(lastPart string) map[string]bool {

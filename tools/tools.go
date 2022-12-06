@@ -31,3 +31,16 @@ func ChunkSlice(slice []string, chunkSize int) [][]string {
 	}
 	return chunks
 }
+
+func RemoveDuplicates(intSlice []string) []string {
+	keys := make(map[string]bool)
+	result := []string{}
+
+	for _, x := range intSlice {
+		if _, val := keys[x]; !val {
+			keys[x] = true
+			result = append(result, x)
+		}
+	}
+	return result
+}

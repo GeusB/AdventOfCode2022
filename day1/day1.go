@@ -8,20 +8,20 @@ import (
 )
 
 func Part1() {
-	smallResult := CalculateTopElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := calculateTopElfCalories(getInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateTopElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := calculateTopElfCalories(getInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
 func Part2() {
-	smallResult := CalculateTopThreeElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
+	smallResult := calculateTopThreeElfCalories(getInput("C:\\Repos\\AdventOfCode2022\\day1\\day1_ex.txt"))
 	fmt.Println(smallResult)
-	result := CalculateTopThreeElfCalories(GetInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
+	result := calculateTopThreeElfCalories(getInput("C:\\Repos\\AdventOfCode2022\\day1\\day1.txt"))
 	fmt.Println(result)
 }
 
-func CalculateElfCalorieList(input []int) []int {
+func calculateElfCalorieList(input []int) []int {
 	resultList := []int{}
 	length := len(input)
 	sum := 0
@@ -40,7 +40,7 @@ func CalculateElfCalorieList(input []int) []int {
 	return resultList
 }
 
-func GetHighestValue(input []int) int {
+func getHighestValue(input []int) int {
 	var largerNumber, temp int
 	for _, element := range input {
 		if element > temp {
@@ -51,7 +51,7 @@ func GetHighestValue(input []int) int {
 	return largerNumber
 }
 
-func GetHighestThreeValue(input []int) int {
+func getHighestThreeValue(input []int) int {
 	sort.Ints(input)
 	sum := 0
 	length := len(input)
@@ -61,17 +61,17 @@ func GetHighestThreeValue(input []int) int {
 	return sum
 }
 
-func CalculateTopThreeElfCalories(input []int) int {
-	calorieList := CalculateElfCalorieList(input)
-	return GetHighestThreeValue(calorieList)
+func calculateTopThreeElfCalories(input []int) int {
+	calorieList := calculateElfCalorieList(input)
+	return getHighestThreeValue(calorieList)
 }
 
-func CalculateTopElfCalories(input []int) int {
-	calorieList := CalculateElfCalorieList(input)
-	return GetHighestValue(calorieList)
+func calculateTopElfCalories(input []int) int {
+	calorieList := calculateElfCalorieList(input)
+	return getHighestValue(calorieList)
 }
 
-func GetInput(filePath string) []int {
+func getInput(filePath string) []int {
 	lines := tools.ReadFile(filePath)
 	length := len(lines)
 	resultList := []int{}
