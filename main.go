@@ -3,10 +3,11 @@ package main
 import (
 	"AdventOfCode2022/day1"
 	"AdventOfCode2022/day2"
+	"AdventOfCode2022/day3"
 )
 
 func main() {
-	Day2()
+	Day3()
 }
 
 func Day1() {
@@ -17,4 +18,9 @@ func Day1() {
 func Day2() {
 	day2.Part1()
 	day2.Part2()
+}
+
+func Day3() {
+	day3.Part1()
+	day3.Part2()
 }
